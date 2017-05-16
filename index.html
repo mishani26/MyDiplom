@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#inputTextArea").keypress((event) => {
+        var inputValue = event.charCode;
+        if (!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) {
+          event.preventDefault();
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="index_wrap">
+    <div class="index_elemnt index_header">
+      <h1>Enigma</h1>
+    </div>
+    <div class="index_elemnt index_input">
+      <textarea id="inputTextArea" rows="10" cols="45" name="text"></textarea>
+    </div>
+    <div class="index_elemnt index_controls">
+      <input type="button" value="Create file" id="create-file" />
+      <input type="button" value="Open file" id="open-file" />
+    </div>
+  </div>
+  <script src="home.js">
+  </script>
+  <script src="routes.js">
+  </script>
+</body>
+
+</html>

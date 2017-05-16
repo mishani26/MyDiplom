@@ -1,0 +1,92 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe, table, caption, tbody, tfoot, thead, tr, th, td,
+del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0; }
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0; }
+
+body {
+  background: white;
+  line-height: 1;
+  color: black; }
+
+ol, ul {
+  list-style: none; }
+
+/* tables still need cellspacing="0" in the markup */
+table {
+  border-collapse: separate;
+  border-spacing: 0; }
+
+caption, th, td {
+  font-weight: normal;
+  text-align: left; }
+
+/* remove possible quote marks (") from <q> & <blockquote> */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: ""; }
+
+blockquote, q {
+  quotes: "" ""; }
+
+@font-face {
+  font-family: PackardClipperNF;
+  /* Имя шрифта */
+  src: url("./../fonts/PackardClipperNF.ttf");
+  /* Путь к файлу со шрифтом */ }
+
+@font-face {
+  font-family: TravelingTypewriter;
+  /* Имя шрифта */
+  src: url("./../fonts/TravelingTypewriter.ttf");
+  /* Путь к файлу со шрифтом */ }
+
+body {
+  color: #F6F6F6;
+  background: #2B2B2B; }
+
+.index_wrap {
+  display: flex;
+  flex-direction: column; }
+  .index_wrap .index_elemnt {
+    display: flex;
+    justify-content: center; }
+  .index_wrap .index_header {
+    font-family: PackardClipperNF;
+    font-size: 5.5em;
+    margin: 20px 0; }
+  .index_wrap .index_input textarea {
+    border-radius: 8px;
+    border: 2px solid #DE1B1B;
+    color: #F6F6F6;
+    font-family: TravelingTypewriter;
+    font-size: 1.2em;
+    background: #F6F6F6;
+    color: black; }
+  .index_wrap .index_controls {
+    margin: 20px 0; }
+    .index_wrap .index_controls input {
+      font-size: 1.3em;
+      padding: 15px 28px;
+      background: #DE1B1B;
+      margin-right: 20px;
+      border-radius: 8px;
+      border: 2px solid #DE1B1B;
+      color: #F6F6F6;
+      transition: 0.5s; }
+    .index_wrap .index_controls input:hover {
+      background: #F6F6F6;
+      color: #DE1B1B;
+      cursor: pointer; }

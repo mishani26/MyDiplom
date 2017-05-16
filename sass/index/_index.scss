@@ -1,0 +1,67 @@
+$Fontcolor: #F6F6F6;
+@mixin input_style {
+  border-radius: 8px;
+  border: 2px solid #DE1B1B;
+  color: $Fontcolor;
+}
+@font-face {
+  font-family: PackardClipperNF;
+  /* Имя шрифта */
+  src: url("./../fonts/PackardClipperNF.ttf");
+  /* Путь к файлу со шрифтом */
+}
+@font-face {
+  font-family: TravelingTypewriter;
+  /* Имя шрифта */
+  src: url("./../fonts/TravelingTypewriter.ttf");
+  /* Путь к файлу со шрифтом */
+}
+body {
+  color: $Fontcolor;
+  background: #2B2B2B;
+}
+
+.index_wrap {
+  display: flex;
+  flex-direction: column;
+
+  .index_elemnt {
+    display: flex;
+    justify-content: center;
+  }
+
+  .index_header {
+    font-family: PackardClipperNF;
+    font-size: 5.5em;
+    margin: 20px 0;
+  }
+
+  .index_input {
+    textarea {
+      @include input_style;
+      font-family: TravelingTypewriter;
+      font-size: 1.2em;
+      background: $Fontcolor;
+      color: black;
+    }
+  }
+
+  .index_controls {
+    margin: 20px 0;
+
+    input {
+      font-size: 1.3em;
+      padding: 15px 28px;
+      background: #DE1B1B;
+      margin-right: 20px;
+      @include input_style;
+      transition: 0.5s;
+    }
+
+    input:hover {
+      background: $Fontcolor;
+      color: #DE1B1B;
+      cursor: pointer;
+    }
+  }
+}

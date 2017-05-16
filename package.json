@@ -1,0 +1,30 @@
+{
+  "name": "diplom_app",
+  "version": "1.0.0",
+  "description": "descr",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"gulp watch\" \"electron index.js\"",
+    "package": "asar pack Diplom-win32-x64/resources/app Diplom-win32-x64/resources/app.asar",
+    "build": "electron-packager . Diplom"
+  },
+  "keywords": [
+    "dsds"
+  ],
+  "author": "Misha",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-route": "^1.6.2",
+    "egoroof-blowfish": "^1.0.1",
+    "electron": "^1.4.15"
+  },
+  "devDependencies": {
+    "asar": "^0.13.0",
+    "bootstrap": "^3.3.7",
+    "concurrently": "^3.4.0",
+    "electron-packager": "^8.5.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  }
+}
