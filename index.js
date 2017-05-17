@@ -2,7 +2,7 @@ const electron = require('electron')
 const {app,BrowserWindow}=electron
 
 app.on('ready', ()=>{
-	let win = new BrowserWindow({width:700,height:600})
+	let win = new BrowserWindow({width:700,height:650})
 	win.loadURL(`file://${__dirname}/index.html`)
 })
 

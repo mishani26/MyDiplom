@@ -67,7 +67,7 @@ body {
     font-family: PackardClipperNF;
     font-size: 5.5em;
     margin: 20px 0; }
-  .index_wrap .index_input textarea {
+  .index_wrap .index_input textarea, .index_wrap .index_input input {
     border-radius: 8px;
     border: 2px solid #DE1B1B;
     color: #F6F6F6;
@@ -75,6 +75,9 @@ body {
     font-size: 1.2em;
     background: #F6F6F6;
     color: black; }
+  .index_wrap .index_input input {
+    margin: 15px 0px;
+    padding: 5px 10px; }
   .index_wrap .index_controls {
     margin: 20px 0; }
     .index_wrap .index_controls input {

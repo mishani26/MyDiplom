@@ -37,12 +37,17 @@ body {
   }
 
   .index_input {
-    textarea {
+    textarea, input {
       @include input_style;
       font-family: TravelingTypewriter;
       font-size: 1.2em;
       background: $Fontcolor;
       color: black;
+    }
+
+    input{
+      margin: 15px 0px;
+      padding: 5px 10px;
     }
   }
 

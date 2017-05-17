@@ -4,7 +4,7 @@ var fs = require('fs');
 var enigma = require('enigma-js')
 var crypt = require('crypto'),
     algorithm = 'aes-256-ctr',
-    password = 'd6F3Efeq';
+    password = null;
 
   function encrypt(text){
   var cipher = crypt.createCipher(algorithm,password)
@@ -48,6 +48,7 @@ var default_settings = {
 }
 
 document.getElementById('create-file').onclick=()=> {
+    password=document.getElementById('cryptoKey').value;
   dialog.showSaveDialog((fileName) => {
     // fileNames is an array that contains all the selected
     if (fileName === undefined) {
@@ -61,6 +62,7 @@ document.getElementById('create-file').onclick=()=> {
 };
 
 document.getElementById('open-file').onclick=()=>{
+  password=document.getElementById('cryptoKey').value;
   dialog.showOpenDialog((filenames)=>{
     if (filenames === undefined) {
       alert("No file name");
