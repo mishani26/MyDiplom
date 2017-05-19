@@ -3,10 +3,10 @@ var dialog = app.dialog;
 var fs = require('fs');
 var enigma = require('enigma-js')
 var crypt = require('crypto'),
-    algorithm = 'aes-256-ctr',
-    password = null;
+    algorithm = 'aes-256-ctr';
 
-  function encrypt(text){
+  function encrypt(text){  
+  var password=document.getElementById('cryptoKey').value;
   var cipher = crypt.createCipher(algorithm,password)
   var crypted = cipher.update(text,'utf8','hex')
   crypted += cipher.final('hex');
@@ -14,6 +14,7 @@ var crypt = require('crypto'),
 }
  
 function decrypt(text){
+  var password=document.getElementById('cryptoKey').value;
   var decipher = crypt.createDecipher(algorithm,password)
   var dec = decipher.update(text,'hex','utf8')
   dec += decipher.final('utf8');
@@ -48,7 +49,6 @@ var default_settings = {
 }
 
 document.getElementById('create-file').onclick=()=> {
-    password=document.getElementById('cryptoKey').value;
   dialog.showSaveDialog((fileName) => {
     // fileNames is an array that contains all the selected
     if (fileName === undefined) {
@@ -62,7 +62,6 @@ document.getElementById('create-file').onclick=()=> {
 };
 
 document.getElementById('open-file').onclick=()=>{
-  password=document.getElementById('cryptoKey').value;
   dialog.showOpenDialog((filenames)=>{
     if (filenames === undefined) {
       alert("No file name");
@@ -90,11 +89,22 @@ function saveFile(fileName) {
 }
 
 function readFile(filepath) {
-  fs.readFile(filepath,"utf-8", (err, data) => {
+  
+fs.readFile(filepath,"utf-8", (err, data) => {
+  try{
   if (err) throw err;
   enigma.load(JSON.parse(JSON.stringify(default_settings)))
-  let decrypted_message = enigma.process(decrypt(data));
+  let decripted_data=decrypt(data);
+  if(decripted_data.indexOf('�') > -1){
+    throw new Error("Invalid character '�' found in mesage '"+decripted_data+"'")
+  }
+  let decrypted_message = enigma.process(decripted_data);
   alert(decrypted_message);
+  }
+  catch(ex){
+    alert(ex.message);
+    decrypted_message=null;
+  }
   document.getElementById('inputTextArea').value=decrypted_message;
 });
 }
