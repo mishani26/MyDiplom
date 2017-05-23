@@ -1,9 +1,17 @@
+const remote = require('electron').remote
+const main = remote.require('./index.js');
 var app = require('electron').remote;
 var dialog = app.dialog;
 var fs = require('fs');
 var enigma = require('enigma-js')
 var crypt = require('crypto'),
     algorithm = 'aes-256-ctr';
+
+document.querySelector("#navlink").addEventListener('click',()=>{
+  var window= remote.getCurrentWindow();
+  main.openWindow('pageTwo');
+  window.close();
+},false)
 
   function encrypt(text){  
   var password=document.getElementById('cryptoKey').value;

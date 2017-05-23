@@ -1,5 +1,9 @@
-const remote = require('electron').remote
+const remote = require('electron').remote;
 const main = remote.require('./index.js');
+var app = require('electron').remote;
+var dialog = app.dialog;
+var fs = require('fs');
+var enigma = require('enigma-js')
 
 var button=document.createElement('button');
 button.textContent='Open Window'
@@ -8,8 +12,7 @@ button.addEventListener('click',()=>{
   main.openWindow('index');
   window.close();
 },false)
-document.body.appendChild(button)
-var enigma = require('enigma-js')
+document.body.appendChild(button);
 
 var default_settings = {
   rotors: [
@@ -32,3 +35,14 @@ enigma.load(default_settings)
 alert(
   enigma.process('HELLOWORLD')
 )
+
+document.getElementById('open-file').onclick=()=>{
+  dialog.showOpenDialog((filenames)=>{
+    if (filenames === undefined) {
+      alert("No file name");
+      return;
+    } else {
+      alert(filenames[0]);
+    }
+  })
+}

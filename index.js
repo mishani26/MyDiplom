@@ -7,6 +7,6 @@ app.on('ready', ()=>{
 })
 
 exports.openWindow = (filename) =>{
-	let win = new BrowserWindow({width:600,height:400})
+	let win = new BrowserWindow({width:700,height:650})
 	win.loadURL(`file://${__dirname}/` + filename + `.html`)
 }
