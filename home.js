@@ -99,6 +99,7 @@ function saveFile(fileName) {
 function readFile(filepath) {
   
 fs.readFile(filepath,"utf-8", (err, data) => {
+  let decrypted_message=null;
   try{
   if (err) throw err;
   enigma.load(JSON.parse(JSON.stringify(default_settings)))
@@ -106,7 +107,8 @@ fs.readFile(filepath,"utf-8", (err, data) => {
   if(decripted_data.indexOf('�') > -1){
     throw new Error("Invalid character '�' found in mesage '"+decripted_data+"'")
   }
-  let decrypted_message = enigma.process(decripted_data);
+  alert(decripted_data);
+  decrypted_message = enigma.process(decripted_data);
   alert(decrypted_message);
   }
   catch(ex){
