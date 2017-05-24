@@ -93,3 +93,78 @@ body {
       background: #F6F6F6;
       color: #DE1B1B;
       cursor: pointer; }
+
+@font-face {
+  font-family: PackardClipperNF;
+  /* Имя шрифта */
+  src: url("./../fonts/PackardClipperNF.ttf");
+  /* Путь к файлу со шрифтом */ }
+
+@font-face {
+  font-family: TravelingTypewriter;
+  /* Имя шрифта */
+  src: url("./../fonts/TravelingTypewriter.ttf");
+  /* Путь к файлу со шрифтом */ }
+
+body {
+  color: #F6F6F6;
+  background: #2B2B2B; }
+
+.index_wrap {
+  display: flex;
+  flex-direction: column; }
+  .index_wrap .index_elemnt {
+    display: flex;
+    justify-content: center; }
+  .index_wrap .index_header {
+    font-family: PackardClipperNF;
+    font-size: 5.5em;
+    margin: 20px 0; }
+  .index_wrap .index_input textarea, .index_wrap .index_input input {
+    border-radius: 8px;
+    border: 2px solid #DE1B1B;
+    color: #F6F6F6;
+    font-family: TravelingTypewriter;
+    font-size: 1.2em;
+    background: #F6F6F6;
+    color: black; }
+  .index_wrap .index_input input {
+    margin: 15px 0px;
+    padding: 5px 10px; }
+  .index_wrap .index_controls {
+    margin: 20px 0; }
+    .index_wrap .index_controls input {
+      font-size: 1.3em;
+      padding: 15px 28px;
+      background: #DE1B1B;
+      margin-right: 20px;
+      border-radius: 8px;
+      border: 2px solid #DE1B1B;
+      color: #F6F6F6;
+      transition: 0.5s; }
+    .index_wrap .index_controls input:hover {
+      background: #F6F6F6;
+      color: #DE1B1B;
+      cursor: pointer; }
+
+.pageTwo-wrap .pageTwo_header {
+  text-align: center;
+  font-family: PackardClipperNF;
+  font-size: 5.5em;
+  margin: 20px 0; }
+
+.pageTwo-wrap .pageTwo-buttons_group {
+  text-align: center; }
+  .pageTwo-wrap .pageTwo-buttons_group input {
+    font-size: 1.3em;
+    padding: 15px 28px;
+    background: #DE1B1B;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: 2px solid #DE1B1B;
+    color: #F6F6F6;
+    transition: 0.5s; }
+  .pageTwo-wrap .pageTwo-buttons_group input:hover {
+    background: #F6F6F6;
+    color: #DE1B1B;
+    cursor: pointer; }

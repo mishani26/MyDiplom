@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="css/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Page two</title>
 </head>
 <body>
-<h1>Page two</h1>
-<div id="camdemo" style="width: 320px; height: 240px; text-align: center; margin: 0 auto;"></div>
+  <!--<a href="" id="PageThree">Page three</a>-->
+  <div class="pageTwo-wrap">
+  <a href="" id="PageOne">Page one</a>
+<div class="pageTwo_elemnt pageTwo_header">
+      <h1>Photo</h1>
+    </div>
+<div id="camdemo" style="width: 651px; height: 364px; text-align: center; margin: 0 auto;"></div>
 <br>
-<div style="text-align:center;">
-  <input type="button" id="Encodefile" value="Encode photo in Desktop"/>
-  <input type="button" value="Open file" id="open-file" />
-    <input type="button" id="savefile" value="Save photo in Desktop"/>
+<div class="pageTwo-buttons_group">
+  <input type="button" id="Encodefile" value="Encode photo"/>
+  <input type="button" value="Decode photo" id="open-file" />
+</div>
 </div>
 <script src="pageTwo.js">
 </script>

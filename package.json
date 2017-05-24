@@ -18,6 +18,7 @@
     "angular-route": "^1.6.2",
     "egoroof-blowfish": "^1.0.1",
     "electron": "^1.4.15",
+    "node-record-lpcm16": "^0.3.0",
     "webcamjs": "^1.0.22"
   },
   "devDependencies": {

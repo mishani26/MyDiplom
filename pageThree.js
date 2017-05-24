@@ -4,20 +4,7 @@ var app = require('electron').remote;
 var dialog = app.dialog;
 var fs = require('fs');
 var enigma = require('enigma-js');
-var WebCamera = require("webcamjs");
-
-// document.querySelector("#PageThree").addEventListener('click',()=>{
-//   var window= remote.getCurrentWindow();
-//   main.openWindow('PageThree');
-//   window.close();
-// },false)
-
-
-document.querySelector("#PageOne").addEventListener('click',()=>{
-  var window= remote.getCurrentWindow();
-  main.openWindow('index');
-  window.close();
-},false)
+var record = require('node-record-lpcm16')
 
 var default_settings = {
   rotors: [
@@ -35,30 +22,39 @@ var default_settings = {
   spacing: 4
 }
 
-// Use require to add webcamjs;
-WebCamera.attach('#camdemo');
 
-function processBase64Image(dataString) {
-      var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),response = {};
+document.querySelector("#PageTwo").addEventListener('click',()=>{
+  var window= remote.getCurrentWindow();
+  main.openWindow('PageTwo');
+  window.close();
+},false)
 
-      if (matches.length !== 3) {
-          return new Error('Invalid input string');
-      }
 
-      response.type = matches[1];
-      response.data = new Buffer(matches[2], 'base64');
+document.getElementById('encode-file').onclick=()=>{
+  dialog.showOpenDialog({filters: [
+                        { name: 'sound', extensions: ['mp3'] },
+                    ]},(filenames)=>{
+    if (filenames === undefined) {
+      alert("No file name");
+      return;
+    } else {
+      alert(filenames[0]);
+      encodeFile(filenames[0]);
+    }
+  })
+};
 
-      return response;
-}
-
-document.getElementById("Encodefile").onclick=()=>{
-            WebCamera.snap(function(data_uri) {
-                // Save the image in a variable
-                let result_Numstring="";
+function encodeFile(filepath){
+  if(filepath.endsWith('.mp3')){
+fs.readFile(filepath,"utf-8", (err, data) => {
+    let result_Numstring="";
                 let result_string="";
                 let LattersArr=["A","B","C","D","E","F","G","H","I","J"];
-                data_uri.split("").forEach(function(element, index, array) {
-                   var simbolChar= data_uri.charCodeAt(index).toString();
+                var b_data = new Buffer(data);
+                var s_data = b_data.toString('base64');
+                alert("ready");
+                s_data.split("").forEach(function(element, index, array) {
+                   var simbolChar= s_data.charCodeAt(index).toString();
                    if(simbolChar.length<3){
                    do{
                        simbolChar="0"+simbolChar;
@@ -92,14 +88,15 @@ document.getElementById("Encodefile").onclick=()=>{
                            if(err){
                                console.log("Cannot save the file :'( time to cry !");
                            }else{
-                               alert("Image encoded succesfully");
+                               alert("File encoded succesfully");
                            }
                        });
                 });
-             });
-};
+  });
+  }
+}
 
-document.getElementById('open-file').onclick=()=>{
+document.getElementById('decode-file').onclick=()=>{
   dialog.showOpenDialog((filenames)=>{
     if (filenames === undefined) {
       alert("No file name");
@@ -126,22 +123,23 @@ fs.readFile(filepath,"utf-8", (err, data) => {
     alert(ex.message);
     decrypted_message=null;
   }
-  console.log(decrypted_message);
+  alert("pase 1");
   decrypted_message.split("").forEach(function(element, index, array) {
                       result_Numstring=result_Numstring + DigitArray[element]               
             }, this);
-  console.log(result_Numstring);
+            alert("pase 2");
   let test=result_Numstring.split(/(\d{3})/);
             test.forEach(function(element, index, array) {
                    if(element!==""){
                        result_string=result_string+String.fromCodePoint(parseInt(element));
                    }
             }, this);
-            console.log(result_string);
-            var imageBuffer = processBase64Image(result_string);
+            alert("pase 3");
+            var b = new Buffer(result_string, 'base64')
+            var s = b.toString();
             dialog.showSaveDialog({
                     filters: [
-                        { name: 'Images', extensions: ['png'] },
+                        { name: 'sound', extensions: ['mp3'] },
                     ]
                 },function (fileName) {
                        if (fileName === undefined){
@@ -150,41 +148,13 @@ fs.readFile(filepath,"utf-8", (err, data) => {
                        }
                        // If the user gave a name to the file, then save it
                        // using filesystem writeFile function
-                       fs.writeFile(fileName, imageBuffer.data, function(err) {
+                       fs.writeFile(fileName, s, function(err) {
                            if(err){
                                console.log("Cannot save the file :'( time to cry !");
                            }else{
-                               alert("Image saved succesfully");
+                               alert("File saved succesfully");
                            }
                        });
                 });
 });
 }
-
-document.getElementById("savefile").onclick=()=>{
-            WebCamera.snap(function(data_uri) {
-                // Save the image in a variable
-                alert(data_uri);
-                var imageBuffer = processBase64Image(data_uri);
-                // Start the save dialog to give a name to the file
-                dialog.showSaveDialog({
-                    filters: [
-                        { name: 'Images', extensions: ['png'] },
-                    ]
-                },function (fileName) {
-                       if (fileName === undefined){
-                            console.log("You didn't save the file because you exit or didn't give a name");
-                            return;
-                       }
-                       // If the user gave a name to the file, then save it
-                       // using filesystem writeFile function
-                       fs.writeFile(fileName, imageBuffer.data, function(err) {
-                           if(err){
-                               console.log("Cannot save the file :'( time to cry !");
-                           }else{
-                               alert("Image saved succesfully");
-                           }
-                       });
-                });
-             });
-};

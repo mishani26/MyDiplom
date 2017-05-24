@@ -1,0 +1,26 @@
+@import "index/_index";
+.pageTwo-wrap{
+    .pageTwo_header {
+        text-align: center;
+    font-family: PackardClipperNF;
+    font-size: 5.5em;
+    margin: 20px 0;
+  }
+.pageTwo-buttons_group{
+    text-align:center;
+    input {
+      font-size: 1.3em;
+      padding: 15px 28px;
+      background: #DE1B1B;
+      margin-right: 20px;
+      @include input_style;
+      transition: 0.5s;
+    }
+
+    input:hover {
+      background: $Fontcolor;
+      color: #DE1B1B;
+      cursor: pointer;
+    }
+}
+}
